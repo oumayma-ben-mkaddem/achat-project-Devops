@@ -1,8 +1,8 @@
-
+properties([pipelineTriggers([githubPush()])])
 pipeline{
     agent any
     tools {
-            maven 'MAVEN'
+            maven 'M2_HOME'
         }
 
         stages {
