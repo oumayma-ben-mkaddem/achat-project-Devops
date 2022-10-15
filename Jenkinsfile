@@ -15,6 +15,7 @@ pipeline{
                     url : 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops';
                 }
             }
+            }
         /* stage('git clone') {
             steps {
                git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops'
