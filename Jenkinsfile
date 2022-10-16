@@ -22,24 +22,25 @@ pipeline{
                        git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
                     }
                 }
+                  stage('MVN CLEAN'){
+                    steps {
+                        sh 'mvn clean'
+                    }
+                }
+                     stage('MVN COMPILE') {
+                    steps {
+                        sh 'mvn install'
+                    }
+                } 
 
-   stage('Build Maven') {
+  /* stage('Build Maven') {
             steps{
 
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
             }
-        }
-                    /* stage('MVN CLEAN'){
-                    steps {
-                        sh 'mvn clean'
-                    }
-                }
-                     stage('MVN INSTALL') {
-                    steps {
-                        sh 'mvn install'
-                    }
-                } */
+        }*/
+                   
 
 }
 }
