@@ -25,7 +25,14 @@ pipeline{
                     }
                 }
 
-                    stage('MVN CLEAN'){
+   stage('Build Maven') {
+            steps{
+
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+            }
+        }
+                    /* stage('MVN CLEAN'){
                     steps {
                         sh 'mvn clean'
                     }
@@ -34,7 +41,7 @@ pipeline{
                     steps {
                         sh 'mvn install'
                     }
-                }
+                } */
 
 }
 }
