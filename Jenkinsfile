@@ -39,11 +39,25 @@ pipeline{
         
         }}
             
-            stage('Build Docker Image') {
-            steps {
-                script {
-                  sh 'docker build -t devopshint/my-app-1.0 .'
+            stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
+            } 
+        }
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
+        stage('Cleaning up') { 
+            steps { 
+                sh "docker rmi $registry:$BUILD_NUMBER" 
             }
         }
 
