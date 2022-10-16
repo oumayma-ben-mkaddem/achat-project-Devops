@@ -13,12 +13,18 @@ pipeline{
                     url : 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops';
                 }
             }
+             stage('MVN version'){
+                    steps {
+                        sh 'mvn -version'
+                    }
+                }
 
-        stage('git clone') {
+      /*  stage('git clone') {
                     steps {
                        git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
                     }
-                }
+                }*/
+            
                  /* stage('MVN CLEAN'){
                     steps {
                         sh 'mvn clean'
