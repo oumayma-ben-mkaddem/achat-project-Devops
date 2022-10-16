@@ -1,14 +1,16 @@
 properties([pipelineTriggers([githubPush()])])
 pipeline{
     agent any
-    
+     tools {
+        maven 'M2_HOME'
+    }
 
         stages {
-            stage ('Hello') {
+         /*   stage ('Hello') {
                 steps {
                     echo 'Hello World ngrok !!!! '
                 }
-            }
+            }*/
             stage('Checkout GIT ') {
                 steps {
                     echo 'Pulling ...';
