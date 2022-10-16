@@ -13,9 +13,9 @@ pipeline{
                     url : 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops';
                 }
             }
-             stage('MVN version'){
+             stage('MVN CLEAN'){
                     steps {
-                        sh 'mvn -version'
+                        sh 'mvn clean'
                     }
                 }
 
