@@ -19,6 +19,12 @@ pipeline{
                     }
                 }
 
+            stage('MVN INSTALL') {
+                    steps {
+                        sh 'mvn install'
+                    }
+                } 
+
       /*  stage('git clone') {
                     steps {
                        git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
