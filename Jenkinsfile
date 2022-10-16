@@ -6,11 +6,6 @@ pipeline{
     }
 
         stages {
-         /*   stage ('Hello') {
-                steps {
-                    echo 'Hello World ngrok !!!! '
-                }
-            }*/
             stage('Checkout GIT ') {
                 steps {
                     echo 'Pulling ...';
@@ -33,9 +28,9 @@ pipeline{
                     steps {
                         sh 'mvn install'
                     }
-                } */
+                } 
 
-  /* stage('Build Maven') {
+   stage('Build Maven') {
             steps{
 
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -51,7 +46,7 @@ pipeline{
                 }
             }
 }
-}
+
 
 //////////////////////////////
 /*
