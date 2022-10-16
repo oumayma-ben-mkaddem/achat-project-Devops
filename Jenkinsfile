@@ -4,6 +4,11 @@ pipeline{
      tools {
         maven 'M2_HOME'
     }
+    environment {
+    registry = "oumaymabenmkadem/achatTest"
+        registryCredential='dockerhub-id'
+        dockerImage=''
+    }
 
         stages {
             stage('Checkout GIT ') {
