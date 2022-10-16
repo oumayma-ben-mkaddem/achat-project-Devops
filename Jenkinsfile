@@ -68,7 +68,7 @@ main']], extensions: [], userRemoteConfigs: [[credentialsId: 'devopshint', url: 
         stage('Build Docker Image') {
             steps {
                 script {
-                  sh 'docker build -t devopshint/my-app-1.0 .'
+                  sh 'docker build -t devopshint/my-app-1.0'
                 }
             }
         }
