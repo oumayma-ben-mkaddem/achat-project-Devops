@@ -13,7 +13,7 @@ pipeline{
                     url : 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops';
                 }
             }
-             stage('MVN CLEAN'){
+            /* stage('MVN CLEAN'){
                     steps {
                         sh 'mvn clean'
                     }
@@ -23,7 +23,13 @@ pipeline{
                     steps {
                         sh 'mvn install'
                     }
-                } 
+                } */
+             stage('Build Maven') {
+            steps{
+
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+            }}
 
       /*  stage('git clone') {
                     steps {
@@ -41,13 +47,7 @@ pipeline{
                         sh 'mvn install'
                     }
                 } 
-
-   stage('Build Maven') {
-            steps{
-
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-            }
+  
         }*/
                    
 
