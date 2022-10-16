@@ -5,7 +5,7 @@ pipeline{
         maven 'M2_HOME'
     }
     environment {
-    registry = "oumaymabenmkadem/achatTest"
+    registry = "oumaymabenmkadem/achat-test"
         registryCredential='dockerhub-id'
         dockerImage=''
     }
