@@ -20,7 +20,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Produit implements Serializable {
 
@@ -47,6 +46,20 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
+	public Produit(Long idProduit, String codeProduit, String libelleProduit, float prix, Date dateCreation,
+			Date dateDerniereModification, Stock stock, Set<DetailFacture> detailFacture,
+			CategorieProduit categorieProduit) {
+		super();
+		this.idProduit = idProduit;
+		this.codeProduit = codeProduit;
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+		this.dateCreation = dateCreation;
+		this.dateDerniereModification = dateDerniereModification;
+		this.stock = stock;
+		this.detailFacture = detailFacture;
+		this.categorieProduit = categorieProduit;
+	}
 	
 
 
