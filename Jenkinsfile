@@ -11,13 +11,18 @@ pipeline{
     }
 
         stages {
-            stage('Checkout GIT ') {
+             stage('git clone') {
+                    steps {
+                       git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
+                    }
+                }
+           /* stage('Checkout GIT ') {
                 steps {
                     echo 'Pulling ...';
                     git branch : 'main',
                     url : 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops';
                 }
-            }
+            }*/
              stage('MVN CLEAN'){
                     steps {
                         sh 'mvn clean'
@@ -29,28 +34,22 @@ pipeline{
                         sh 'mvn install'
                     }
                 } 
-           /*  stage('Build Maven') {
-            steps{
-
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-            }}
+            
             stage('sonarQube analysis'){
-        
         steps{
         withSonarQubeEnv('sonarqube-8.9.7'){
         sh"mvn sonar:sonar"
         }
         
-        }}*/
+        }}
             
-            stage('Building our image') { 
+          /*  stage('Building our image') { 
             steps { 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
             } 
-        }
+        }*/
         /*stage('Deploy our image') { 
             steps { 
                 script { 
