@@ -29,20 +29,14 @@ pipeline{
                         sh 'mvn install'
                     }
                 } 
-           /*  stage('Build Maven') {
-            steps{
-
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-            }}
+            
             stage('sonarQube analysis'){
-        
         steps{
         withSonarQubeEnv('sonarqube-8.9.7'){
         sh"mvn sonar:sonar"
         }
         
-        }}*/
+        }}
             
             stage('Building our image') { 
             steps { 
