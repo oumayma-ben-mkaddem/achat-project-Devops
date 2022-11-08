@@ -51,7 +51,7 @@ pipeline {
     }
     stage('Nexus') {
       steps {
-        sh 'mvn deploy -DskipTests -s /usr/share/maven/conf/settings.xml'
+        sh 'mvn deploy -DskipTests -s settings.xml'
       }
     }
     /*  stage('Building our image') { 
