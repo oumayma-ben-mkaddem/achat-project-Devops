@@ -44,7 +44,7 @@ public class ProduitServiceImpl implements IProduitService {
 	public void deleteProduit(Long produitId) {
 		produitRepository.deleteById(produitId);
 	}
-
+//test
 	@Override
 	public Produit updateProduit(Produit p) {
 		return produitRepository.save(p);
