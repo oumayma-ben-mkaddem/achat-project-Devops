@@ -21,7 +21,7 @@
 	<distributionManagement>
 		<repository>
 			<id>deploymentRepoRh</id>
-			<name>nexus-repository</name>
+			<name>maven-releases</name>
 			<url>http://192.168.1.9:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
