@@ -17,6 +17,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -26,6 +28,7 @@ import tn.esprit.rh.achat.repositories.ProduitRepository;
 import org.junit.runner.RunWith;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImpMock {
 	@InjectMocks
@@ -34,13 +37,24 @@ public class ProduitServiceImpMock {
 	@Mock
 	ProduitRepository produitRepository;
 
-	Produit user = new Produit((long) 1,"1","yaourt",540,new Date(2022,5,10),new Date(2022,6,12));
-	ArrayList<Produit> listProducts = new ArrayList<Produit>() {
-	{
-		add(new Produit((long) 2,"2","yaourt",540,new Date(2022,5,10),new Date(2022,6,12)));
-		add(new Produit((long) 3,"3","yaourt",540,new Date(2022,5,10),new Date(2022,6,12)));
-	} 
-	};
+	@Before
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+		Produit user = new Produit((long) 1,"1","yaourt",540,new Date(2022,5,10),new Date(2022,6,12));
+		ArrayList<Produit> listProducts = new ArrayList<Produit>() {
+		{
+			add(new Produit((long) 2,"2","yaourt",540,new Date(2022,5,10),new Date(2022,6,12)));
+			add(new Produit((long) 3,"3","yaourt",540,new Date(2022,5,10),new Date(2022,6,12)));
+		} 
+		};
+	}
+
+	@After
+    public void destroy() {
+		produitRepository.findAll().clear();
+    }
+	
+	
 
 	@Test
 	public void testGetallProducts() {
