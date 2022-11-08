@@ -20,9 +20,9 @@
 	<!-- Deploy to Nexus -->
 	<distributionManagement>
 		<repository>
-			<id>maven-nexus-repo</id>
-			<name>maven-nexus-repo</name>
-			<url>http://192.168.1.9:8081/repository/maven-nexus-repo/</url>
+			<id>maven-releases</id>
+			<name>maven-releases</name>
+			<url>http://192.168.1.9:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 	<dependencies>
