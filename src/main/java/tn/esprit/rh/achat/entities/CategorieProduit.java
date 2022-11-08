@@ -27,9 +27,12 @@ public class CategorieProduit implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCategorieProduit;
-	private String codeCategorie;
-	private String libelleCategorie;
+
 	@OneToMany(mappedBy = "categorieProduit")
 	@JsonIgnore
 	private Set<Produit> produits;
+
+	private String codeCategorie;
+
+	private String libelleCategorie;
 }

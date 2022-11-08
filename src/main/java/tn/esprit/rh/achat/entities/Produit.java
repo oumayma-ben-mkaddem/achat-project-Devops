@@ -47,8 +47,7 @@ public class Produit implements Serializable {
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
 	public Produit(Long idProduit, String codeProduit, String libelleProduit, float prix, Date dateCreation,
-			Date dateDerniereModification, Stock stock, Set<DetailFacture> detailFacture,
-			CategorieProduit categorieProduit) {
+			Date dateDerniereModification) {
 		super();
 		this.idProduit = idProduit;
 		this.codeProduit = codeProduit;
@@ -56,10 +55,10 @@ public class Produit implements Serializable {
 		this.prix = prix;
 		this.dateCreation = dateCreation;
 		this.dateDerniereModification = dateDerniereModification;
-		this.stock = stock;
-		this.detailFacture = detailFacture;
-		this.categorieProduit = categorieProduit;
+		
 	}
+	
+	
 	
 
 
