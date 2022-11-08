@@ -26,9 +26,8 @@ import tn.esprit.rh.achat.repositories.ProduitRepository;
 import org.junit.runner.RunWith;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 @ExtendWith(MockitoExtension.class)
-public class ProduitServiceImpMockTest {
+public class ProduitServiceImpMock {
 	@InjectMocks
 	ProduitServiceImpl produitService;
 
