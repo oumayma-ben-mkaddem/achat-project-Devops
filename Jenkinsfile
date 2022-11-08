@@ -43,17 +43,20 @@ pipeline {
         }
 
       }
-    }*/
+    }
     stage('Junit/Mockito') {
       steps {
         sh 'mvn test'
       }
-    }
-    stage('Nexus') {
-      steps {
-        sh 'mvn deploy -DskipTests -s settings.xml'
-      }
-    }
+    }*/
+   stage ('NEXUS DEPLOY') {
+            steps {
+				script {
+                   nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/achat-1.0.jar']], mavenCoordinate: [artifactId: 'achat', groupId: 'tn.esprit.rh', packaging: 'jar', version: '1.0']]]
+				}
+            }
+        }
+    
     /*  stage('Building our image') { 
             steps { 
                 script { 
