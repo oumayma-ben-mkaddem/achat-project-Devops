@@ -42,6 +42,11 @@ pipeline{
         }
         
         }}
+         stage('Junit/Mockito') {
+                    steps {
+                        sh 'mvn test'
+                    }
+                } 
             
           /*  stage('Building our image') { 
             steps { 
