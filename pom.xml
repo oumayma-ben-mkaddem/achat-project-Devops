@@ -76,6 +76,12 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<includes>
+						<include>
+							<groupId>tn.esprit.rh</groupId>
+          					<artifactId>**/*Mock.java</artifactId>
+						</include>
+					</includes>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -86,5 +92,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 </project>
