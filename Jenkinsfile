@@ -1,86 +1,87 @@
 properties([pipelineTriggers([githubPush()])])
-pipeline{
-    agent any
-     tools {
-        maven 'M2_HOME'
-    }
-    environment {
+pipeline {
+  agent any
+  tools {
+    maven 'M2_HOME'
+  }
+  environment {
     registry = "oumaymabenmkadem/achat-test"
-        registryCredential='dockerhub-id'
-        dockerImage=''
+    registryCredential = 'dockerhub-id'
+    dockerImage = ''
+  }
+
+  stages {
+    stage('git clone') {
+      steps {
+        git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
+      }
+    }
+    /* stage('Checkout GIT ') {
+         steps {
+             echo 'Pulling ...';
+             git branch : 'main',
+             url : 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops';
+         }
+     }*/
+    stage('MVN CLEAN') {
+      steps {
+        sh 'mvn clean'
+      }
     }
 
-        stages {
-             stage('git clone') {
-                    steps {
-                       git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
-                    }
-                }
-           /* stage('Checkout GIT ') {
-                steps {
-                    echo 'Pulling ...';
-                    git branch : 'main',
-                    url : 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops';
-                }
-            }*/
-             stage('MVN CLEAN'){
-                    steps {
-                        sh 'mvn clean'
-                    }
-                }
+    stage('MVN INSTALL') {
+      steps {
+        sh 'mvn install'
+      }
+    }
 
-            stage('MVN INSTALL') {
-                    steps {
-                        sh 'mvn install'
-                    }
-                } 
-            
-            stage('sonarQube analysis'){
-        steps{
-        withSonarQubeEnv('sonarqube-8.9.7'){
-        sh"mvn sonar:sonar"
+    /*stage('sonarQube analysis') {
+      steps {
+        withSonarQubeEnv('sonarqube-8.9.7') {
+          sh "mvn sonar:sonar"
         }
-        
-        }}
-         stage('Junit/Mockito') {
-                    steps {
-                        sh 'mvn test'
-                    }
-                } 
-            stage('Nexus'){
-                    steps {
-                        sh 'mvn deploy -DskipTests'
-                    }
-                }
-          /*  stage('Building our image') { 
+
+      }
+    }*/
+    stage('Junit/Mockito') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+    stage('Nexus') {
+      steps {
+        sh 'mvn deploy -DskipTests'
+      }
+    }
+    /*  stage('Building our image') { 
             steps { 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
             } 
         }*/
-        /*stage('Deploy our image') { 
-            steps { 
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                    }
-                } 
-            }
-        } 
-        stage('Cleaning up') { 
-            steps { 
-                sh "docker rmi $registry:$BUILD_NUMBER" 
-            }
-        }*/
+    /*stage('Deploy our image') { 
+        steps { 
+            script { 
+                docker.withRegistry( '', registryCredential ) { 
+                    dockerImage.push() 
+                }
+            } 
+        }
+    } 
+    stage('Cleaning up') { 
+        steps { 
+            sh "docker rmi $registry:$BUILD_NUMBER" 
+        }
+    }*/
 
-      /*  stage('git clone') {
-                    steps {
-                       git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
-                    }
-                }*/
-            
-                 /* stage('MVN CLEAN'){
+    /*  stage('git clone') {
+                  steps {
+                     git branch: 'main', url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops.git'
+                  }
+              }*/
+
+    /* stage('MVN CLEAN'){
                     steps {
                         sh 'mvn clean'
                     }
@@ -92,15 +93,14 @@ pipeline{
                 } 
   
         }*/
-                   
 
- /*stage('Build Docker Image') {
-            steps {
-                script {
-                  sh 'docker build -t devopsachat/myapp '
-                }
-            }*/
-}
+    /*stage('Build Docker Image') {
+               steps {
+                   script {
+                     sh 'docker build -t devopsachat/myapp '
+                   }
+               }*/
+  }
 }
 
 //////////////////////////////
@@ -113,7 +113,8 @@ pipeline{
     stages {
         stage('Build Maven') {
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*//*
+                checkout([$class: 'GitSCM', branches: [[name: '*/
+/*
 main']], extensions: [], userRemoteConfigs: [[credentialsId: 'devopshint', url: 'https://github.com/devopshint/jenkins...]]])
 
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -141,6 +142,7 @@ main']], extensions: [], userRemoteConfigs: [[credentialsId: 'devopshint', url: 
 } */
 
 /*
-checkout([$class: 'GitSCM', branches: [[name: '*//*
+checkout([$class: 'GitSCM', branches: [[name: '*/
+/*
 main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oumayma-ben-mkaddem/achat-project-Devops']]])
  */
