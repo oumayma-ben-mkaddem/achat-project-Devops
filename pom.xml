@@ -20,15 +20,10 @@
 	<!-- Deploy to Nexus -->
 	<distributionManagement>
 		<repository>
-			<id>deploymentRepo</id>
+			<id>deploymentRepoRh</id>
 			<name>nexus-repository</name>
 			<url>http://192.168.1.9:8081/repository/maven-releases/</url>
 		</repository>
-		 <snapshotRepository>
-        	<id>snapshots</id>
-        	<name>nexus-snapshot</name>
-        	<url>http://192.168.1.9:8081/repository/maven-releases/</url>
-    	</snapshotRepository>
 	</distributionManagement>
 	<dependencies>
 		<dependency>
