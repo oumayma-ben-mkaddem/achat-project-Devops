@@ -16,8 +16,8 @@ services:
     depends_on:
       - database
     container_name: springcontainer
-    image: oumaymabenmkadem/achat:152
-    build: SpringMVC/
+    image: oumaymabenmkadem/achat:153
+    build: /
     ports:
       - 8089:8089
     environment:
