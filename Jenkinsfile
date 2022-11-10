@@ -74,6 +74,11 @@ pipeline {
         }
     }
     
+    stage('Docker compose up') { 
+        steps { 
+            sh "docker-compose up -d" 
+        }
+    }
 
      /*
     stage('Cleaning up') { 
