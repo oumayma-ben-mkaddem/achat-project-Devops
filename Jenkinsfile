@@ -36,10 +36,13 @@ pipeline {
       }
     }
 
-    /*stage('sonarQube analysis') {
+    stage('sonarQube analysis') {
       steps {
         withSonarQubeEnv('sonarqube-8.9.7') {
-          sh "mvn sonar:sonar"
+          sh "mvn sonar:sonar \
+  -Dsonar.projectKey=devops-project \
+  -Dsonar.host.url=http://192.168.1.9:9000 \
+  -Dsonar.login=a63516f216768ab6705c0511ef5ed7f5a85c4828"
         }
 
       }
@@ -48,14 +51,14 @@ pipeline {
       steps {
         sh 'mvn test'
       }
-    }*//*
+    }
    stage ('NEXUS DEPLOY') {
             steps {
 				script {
                    nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'achat', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/achat-1.0.jar']], mavenCoordinate: [artifactId: 'achat', groupId: 'tn.esprit.rh', packaging: 'jar', version: '1.0']]]
 				}
             }
-        }*/
+        }
     
       stage('Building our image') { 
             steps { 
