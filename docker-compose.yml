@@ -15,8 +15,9 @@ services:
   spring-boot:
     depends_on:
       - database
-    image: oumaymabenmkadem/achat:151
     container_name: springcontainer
+    image: oumaymabenmkadem/achat:151
+    build: SpringMVC/
     ports:
       - 8089:8089
     environment:
@@ -30,11 +31,6 @@ services:
     networks:
       - projectdevops
     restart: on-failure
-
-volumes:
-  sonarqube_logs:
-  sonarqube_extensions:
-  sonarqube_data:
   
 networks:
   projectdevops:

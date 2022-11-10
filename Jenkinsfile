@@ -32,10 +32,16 @@ pipeline {
 
     stage('MVN INSTALL') {
       steps {
-        sh 'mvn install'
+        sh 'mvn clean install'
       }
     }
 
+    stage('Junit/Mockito') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+    
     stage('sonarQube analysis') {
       steps {
         withSonarQubeEnv('sonarqube-8.9.7') {
@@ -47,11 +53,7 @@ pipeline {
 
       }
     }
-    stage('Junit/Mockito') {
-      steps {
-        sh 'mvn test'
-      }
-    }
+
    stage ('NEXUS DEPLOY') {
             steps {
 				script {
