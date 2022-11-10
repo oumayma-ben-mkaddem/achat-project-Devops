@@ -30,8 +30,24 @@ services:
     networks:
       - projectdevops
     restart: on-failure
+    
+  sonarqube:
+    container_name: sonarqube
+    image: "sonarqube:8.9.7-community"
+    ports:
+      - "9001:9001"
+    volumes:
+      - 'sonarqube_data:/opt/sonarqube/data'
+      - 'sonarqube_extensions:/opt/sonarqube/extensions'
+      - 'sonarqube_logs:/opt/sonarqube/logs'
+    networks:
+      - projectdevops
 
-
+volumes:
+  sonarqube_logs:
+  sonarqube_extensions:
+  sonarqube_data:
+  
 networks:
   projectdevops:
 
