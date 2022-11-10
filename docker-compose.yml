@@ -15,7 +15,7 @@ services:
   spring-boot:
     depends_on:
       - database
-    image: oumaymabenmkadem/achat:149
+    image: oumaymabenmkadem/achat:151
     container_name: springcontainer
     ports:
       - 8089:8089
