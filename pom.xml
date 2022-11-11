@@ -72,20 +72,19 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.7</version>
-			</plugin>
-<plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
+				 <executions>
+    <execution>
+      <goals>
+        <goal>repackage</goal>
+      </goals>
       <configuration>
-        <archive>
-          <manifest>
-            <mainClass>fully.qualified.MainClass</mainClass>
-          </manifest>
-        </archive>
-        <descriptorRefs>
-          <descriptorRef>jar-with-dependencies</descriptorRef>
-        </descriptorRefs>
+        <classifier>spring-boot</classifier>
+        <mainClass>${fully.qualified.main.class}</mainClass>
       </configuration>
-    </plugin>
+    </execution>
+  </executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
