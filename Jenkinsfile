@@ -24,12 +24,6 @@ pipeline {
       }
     }
 
-    stage('Junit/Mockito') {
-      steps {
-        sh 'mvn test'
-      }
-    }
-
     stage('sonarQube analysis') {
       steps {
         withSonarQubeEnv('sonarqube-8.9.7') {
@@ -38,6 +32,12 @@ pipeline {
  			    -Dsonar.host.url=http://192.168.1.9:9000 \
                 -Dsonar.login=93119ee3376d747389d2d527d09567cade5a3c44"
                 }
+      }
+    }
+
+    stage('Junit/Mockito') {
+      steps {
+        sh 'mvn test'
       }
     }
 
