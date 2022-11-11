@@ -68,21 +68,22 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				 <executions>
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-dependency-plugin</artifactId>
+  <executions>
     <execution>
+      <id>copy-dependencies</id>
+      <phase>prepare-package</phase>
       <goals>
-        <goal>repackage</goal>
+        <goal>copy-dependencies</goal>
       </goals>
       <configuration>
-        <classifier>spring-boot</classifier>
-        <mainClass>${fully.qualified.main.class}</mainClass>
+        <outputDirectory>${project.build.directory}/${project.build.finalName}.lib</outputDirectory>
       </configuration>
     </execution>
   </executions>
-			</plugin>
+</plugin>
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
