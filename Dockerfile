@@ -1,5 +1,4 @@
 FROM openjdk:8-jdk-alpine
-WORKDIR /app
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+EXPOSE 8083
+ADD /target/achat-1.0.jar achat.war
+ENTRYPOINT ["java","-jar","achat.war"] 
