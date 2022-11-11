@@ -19,9 +19,7 @@ services:
     depends_on:
       - database
     container_name: springcontainer
-    build:
-      context: "./"
-      dockerfile: "Dockerfile"
+    image: oumaymabenmkadem/achat:172
     ports:
       - 8089:8089
     environment:
