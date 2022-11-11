@@ -1,3 +1,5 @@
-FROM openjdk:8-jdk-alpine
-COPY target/achat-1.0.jar .
-ENTRYPOINT ["mvn","spring-boot:run"]
+FROM maven:3.3.9-jdk-8-alpine
+WORKDIR /app
+COPY code /app
+WORKDIR /app
+CMD ["mvn","spring-boot:run"]
