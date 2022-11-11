@@ -1,3 +1,3 @@
-ARG JAR_FILE=target/*.jar
+COPY . .
 CMD ["cd","target"]
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","achat-1.0.jar"]
