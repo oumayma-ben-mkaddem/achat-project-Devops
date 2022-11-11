@@ -10,6 +10,8 @@ services:
       - MYSQL_DATABASE=achatdb
     ports:
       - 3306:3306
+    volumes:
+      - /home/mysql/data
     networks:
       - backend
  # App backend service
@@ -30,6 +32,10 @@ services:
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
         }'
+    volumes:
+      - /home/m2
+    stdin_open: true
+    tty: true
     networks:
       - backend
     restart: on-failure
