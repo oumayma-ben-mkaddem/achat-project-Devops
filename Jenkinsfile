@@ -40,10 +40,10 @@ pipeline {
       steps {
         withSonarQubeEnv('sonarqube-8.9.7') {
           sh "mvn sonar:sonar \
-  		      -Dsonar.projectKey=devops-project \
- 			  -Dsonar.host.url=http://192.168.1.9:9000 \
-  			  -Dsonar.login=a63516f216768ab6705c0511ef5ed7f5a85c4828"
-        }
+  		        -Dsonar.projectKey=devops-project \
+ 			    -Dsonar.host.url=http://192.168.1.9:9000 \
+                -Dsonar.login=93119ee3376d747389d2d527d09567cade5a3c44"
+                }
       }
     }
 
@@ -83,10 +83,10 @@ pipeline {
       }
     }
 
-    stage('Cleaning up') { 
+ /*   stage('Cleaning up') { 
         steps { 
             sh "docker rmi $registry:$BUILD_NUMBER" 
         }
-    }
+    }*/
   }
 }
