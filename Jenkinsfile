@@ -79,7 +79,7 @@ pipeline {
 
     stage('Docker compose up') {
       steps {
-        sh "docker-compose up -d --build"
+        sh "docker-compose up -d --build --remove-orphans"
       }
     }
 
