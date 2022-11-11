@@ -1,5 +1,6 @@
 version: '3'
 services:
+# Database Service (Mysql)
   database:
     image: mysql:5.7
     container_name: mysql
@@ -10,8 +11,8 @@ services:
     ports:
       - 3306:3306
     networks:
-      - projectdevops
-
+      - backend
+ # App backend service
   spring-boot:
     depends_on:
       - database
@@ -29,10 +30,10 @@ services:
         "spring.jpa.hibernate.ddl-auto" : "update"
         }'
     networks:
-      - projectdevops
+      - backend
     restart: on-failure
   
 networks:
-  projectdevops:
+  backend:
 
 
